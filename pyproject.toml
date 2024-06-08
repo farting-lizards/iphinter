@@ -1,0 +1,39 @@
+# Copyright (c) 2024 David Caro <david@greyllama.cc>
+# All Rights Reserved.
+#
+# This file is part of iphinter
+#
+# iphinter is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# iphinter is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with Toolforge Builds-Api. If not, see <http://www.gnu.org/licenses/>.
+[tool.poetry]
+name = "iphinter"
+version = "0.1.0"
+description = "Small http server to give your current ip"
+authors = ["David Caro <david@greyllama.cc>"]
+license = "GPLv3 or higher"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.10.0"
+ruff = "^0.4.8"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+# add isort
+extend-select = ["I"]
