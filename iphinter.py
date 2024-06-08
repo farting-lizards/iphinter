@@ -18,15 +18,19 @@
 # along with Toolforge Builds-Api. If not, see <http://www.gnu.org/licenses/>.
 
 import argparse
+import datetime
 import http
 import http.server
 import io
 import json
+import sys
 from shutil import copyfileobj
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self) -> None:
+        print(f"[{datetime.datetime.now()}] Got request from {self.client_address[0]}")
+        sys.stdout.flush()
         data = {
             "ip": self.client_address[0],
             "headers": {key: value for key, value in self.headers.items()},
@@ -53,6 +57,7 @@ def main(port: int) -> None:
     print(f"Starting on address {address} port {port}")
     reachable_address = address if address != "0.0.0.0" else "127.0.0.1"
     print(f"   example: http://{reachable_address}:{port}")
+    sys.stdout.flush()
     s = http.server.HTTPServer((address, port), Handler)
     s.serve_forever()
 
